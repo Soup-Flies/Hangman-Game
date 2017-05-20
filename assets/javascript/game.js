@@ -1,6 +1,5 @@
 
 
-
 var guessedLetters = [];
 var currentWord;
 var success = [];
@@ -13,9 +12,19 @@ var wordList = ['Galaga', 'Arkanoid', 'Gauntlet', 'Centipede', 'Contra'];
 
 
 function setWord() {
+	//Randomly choose word from wordbank
 	var rand = Math.floor(Math.random() * wordList.length);
 	currentWord = wordList[rand].toLowerCase();
 	console.log(currentWord);
+
+	//Display blanks on HTML
+	for (var i = 0; i < currentWord.length; i++) {
+		if (i != currentWord.length - 1) {
+			$("#display").append('<span id="' + i + '">_ </span>');
+		} else {
+			$("#display").append('<span id="' + i + '">_</span>');
+		}
+	}
 }
 
 function guessCheck(event) {
@@ -25,8 +34,9 @@ function guessCheck(event) {
 		console.log('guess is ' + guess);
 	
 		if ($.inArray(guess, currentWord) != -1 && $.inArray(guess, success) == -1) {
-			success.push(guess);
+			updateBlanks(guess);
 			console.log(guess + " is in " + currentWord);
+			
 		} else if (($.inArray(guess, guessedLetters) == -1) && $.inArray(guess, currentWord) == -1) {
 			guessedLetters.push(guess);
 			remainingGuesses--;
@@ -37,6 +47,21 @@ function guessCheck(event) {
 		}
 		console.log(success, guessedLetters);
 	}
+}
+
+function gameWin() {
+
+}
+
+function updateBlanks(letter) {
+	success.push(letter);
+
+	for (var i = 0; i < currentWord.length; i++) {
+		if (letter == currentWord[i]) {
+			$("#" + i).text(currentWord[i] + " " );
+		}
+	}
+		
 }
 
 
