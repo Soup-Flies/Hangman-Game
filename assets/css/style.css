@@ -1,0 +1,100 @@
+.overscan {
+	border: double 7px #B00;
+	height: 300px;
+	margin-right: auto;
+	margin-top: 20px;
+	padding-top: 10px;
+}
+
+body {
+	padding: 10px;
+	border: double 7px #B00;
+	background: #111;
+	font-family: 'arcade_classicregular';
+	color: #777;
+	font-size: 25px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 120px;
+	color: #B00;
+}
+
+p {
+	border: double 7px #B00;
+}
+
+.bodyParts {
+	background: #777;
+}
+
+#cranium {
+	margin-left: -35px;
+	background: #111;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	border: solid #777 2px;
+}
+
+#torso {
+	height: 150px;
+	width: 3px;
+}
+
+#rArm {
+	height: 70px;
+	width: 3px;
+	transform: rotate(-45deg);
+	margin-top: -140px;
+	margin-left: -25px;
+}
+
+#lArm {
+	height: 70px;
+	width: 3px;
+	transform: rotate(45deg);
+	margin-top: -140px;
+	margin-left: 25px;
+}
+
+#lLeg {
+	height: 70px;
+	width: 3px;
+	transform: rotate(45deg);
+	margin-top: -15px;
+	margin-left: -25px;
+}
+
+#rLeg {
+	height: 70px;
+	width: 3px;
+	transform: rotate(-45deg);
+	margin-top: -70px;
+	margin-left: 25px;
+}
+
+.button {
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+	.overscan {
+		height: 230px;
+	}
+
+	#torso {
+		height: 75px;
+	}
+
+	#lArm, #rArm {
+		margin-top: -100px;
+	}
+}
+
+@media screen and (max-width: 648px) {
+	h1 {
+		font-size: 60px;
+	}
+}

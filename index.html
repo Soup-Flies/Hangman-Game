@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Arcade Throwback</title>
+	
+	<link rel="stylesheet" href="./assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
+
+	<link rel="stylesheet" href="./assets/fonts/stylesheet.css">
+
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	
+	
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1>Final</h1>
+		</div>
+		<div class="col-12">
+			<h1>! HangMan</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-xs-12">
+			<div class="overscan">
+				<div class="row">
+					<div class="col-xs-2 col-xs-offset-5">
+						<div id="cranium" class="bodyParts"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2 col-xs-offset-5">
+						<div id="torso" class="bodyParts"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2 col-xs-offset-5">
+						<div id="lArm" class="bodyParts"></div>
+					</div>
+					<div class="col-xs-2 col-xs-offset-5">
+						<div id="rArm" class="bodyParts"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-2 col-xs-offset-5">
+						<div id="lLeg" class="bodyParts"></div>
+					</div>
+					<div class="col-xs-2 col-xs-offset-5">
+						<div id="rLeg" class="bodyParts"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3 col-xs-12">
+			<div id="start" class="button">
+				<p>
+					START
+				</p>
+				<p>
+					Lives: 
+					<span id="lives"></span>
+				</p>
+			</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="display">
+					<p>
+					Guesses:
+					 <span id="guesses"></span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<script src="./assets/javascript/game.js"></script>
+</body>
+</html>
