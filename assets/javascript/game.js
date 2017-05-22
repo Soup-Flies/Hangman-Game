@@ -85,7 +85,7 @@ function gameLoss() {
 	$("#base").attr("src", "./assets/images/losecity.png");
 	$(document).ready(function() {
 		score -= 50;
-		var replay = confirm("All out of quarters man... \nAsk your mom for more?");
+		var replay = confirm("The word was: " + currentWord + "\nAll out of quarters man... \nAsk your mom for more?");
 		if (replay) {
 			resetBoard();
 		}
