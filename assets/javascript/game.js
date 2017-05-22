@@ -54,6 +54,7 @@ function guessCheck(event) {
 
 		if (remainingGuesses == 0) {
 			gameLoss();	
+
 		}
 		
 		}
@@ -65,7 +66,8 @@ function guessCheck(event) {
 
 //Resets game board
 function resetBoard() {
-	$("#display").empty();
+	$(document).ready(function() {
+		$("#display").empty();
 	$("#guesses").empty();
 	replay = false;
 	guessedLetters = [];
@@ -75,17 +77,20 @@ function resetBoard() {
 	setWord();
 	$("#overscan").empty();
 	first = false;
-	$("#overscan").append('<img id="base" src="./assets/images/city.png" alt="Base">');
+	$("#overscan").append('<img id="base" src="./assets/images/city.png" alt="Base">');	
+	})
 } 
 
 function gameLoss() {
+	$("#base").attr("src", "./assets/images/losecity.png");
 	$(document).ready(function() {
 		score -= 50;
 		var replay = confirm("All out of quarters man... \nAsk your mom for more?");
 		if (replay) {
 			resetBoard();
 		}
-	});
+	})
+	
 }
 
 var offset = null;
