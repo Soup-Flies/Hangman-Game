@@ -26,6 +26,7 @@ function setWord() {
 		}
 	}
 	$("#lives").text(remainingGuesses);
+	$("#score").text(wins);
 }
 
 
@@ -52,15 +53,12 @@ function guessCheck(event) {
 			}
 		}
 
-		if (remainingGuesses == 0) {
-			alert("Game over man!");
-			if (replay) {
 
-			}
-			
+		if (remainingGuesses == 0) {
+		gameLoss();	
 		}
 
-		
+
 		
 		}
 		if (correctCount == currentWord.length) {
@@ -71,19 +69,42 @@ function guessCheck(event) {
 
 //Resets game board
 function resetBoard() {
+	$("#display").empty();
+	$("#guesses").empty();
+	replay = false;
+	guessedLetters = [];
+	success = [];
+	remainingGuesses = 8;
 	
+	correctCount = 0;
+
+
+
+	setWord();
 } 
+
+function gameLoss() {
+	$(document).ready(function() {
+		var replay = confirm("Bummer you lost man \nWould you like to play again?");
+		if (replay) {
+			resetBoard();
+		}
+	});
+}
+
+
 
 //Displays win screen
 function gameWin() {
-	var replay = confirm("Play again?");
-	if (replay) {
-		guesses = [];
-		remainingGuesses = 8;
-		wins++;
-		replay = false;
-		setWord();
-	}
+	$(document).ready(function() {
+		wins += 100;
+		$("#score").text(wins);
+		var replay = confirm("Congratulations! \nThe word was " + currentWord + " \nPlay again?");
+		if (replay) {
+			resetBoard();	
+		}
+	})
+		
 }
 
 //Takes guesses and updates the blanks with correct guesses
