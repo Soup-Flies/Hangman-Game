@@ -1,4 +1,17 @@
-.overscan {
+#guess {
+	height: 84px;
+}
+
+#titleholder {
+	height: 300px;
+}
+
+#title {
+	opacity: .1;
+	height: 0px;
+}
+
+#overscan {
 	border: double 7px #B00;
 	height: 300px;
 	margin-right: auto;
@@ -25,58 +38,14 @@ p {
 	border: double 7px #B00;
 }
 
-.bodyParts {
-	background: #777;
-}
-
-#cranium {
-	margin-left: -35px;
-	background: #111;
-	width: 75px;
-	height: 75px;
-	border-radius: 50%;
-	border: solid #777 2px;
-}
-
-#torso {
-	height: 150px;
-	width: 3px;
-}
-
-#rArm {
-	height: 70px;
-	width: 3px;
-	transform: rotate(-45deg);
-	margin-top: -140px;
-	margin-left: -25px;
-}
-
-#lArm {
-	height: 70px;
-	width: 3px;
-	transform: rotate(45deg);
-	margin-top: -140px;
-	margin-left: 25px;
-}
-
-#lLeg {
-	height: 70px;
-	width: 3px;
-	transform: rotate(45deg);
-	margin-top: -15px;
-	margin-left: -25px;
-}
-
-#rLeg {
-	height: 70px;
-	width: 3px;
-	transform: rotate(-45deg);
-	margin-top: -70px;
-	margin-left: 25px;
-}
-
 .button {
 	margin-top: 20px;
+}
+
+#base {
+	position: absolute;
+	bottom: 10px;
+	margin-left: -30px;
 }
 
 @media screen and (max-width: 768px) {

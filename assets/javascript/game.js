@@ -1,13 +1,12 @@
-
-
 var guessedLetters = [];
 var currentWord;
 var success = [];
-var wins = 0;
-var remainingGuesses = 8;
+var score = 0;
+var remainingGuesses = 6;
 var guess;
-var wordList = ['Galaga', 'Arkanoid', 'Gauntlet', 'Centipede', 'Contra', 'Galaxian', 'Millipede']; 
+var wordList = ['Galaga', 'Arkanoid', 'Gauntlet', 'Centipede', 'Contra', 'Galaxian', 'Millipede', 'Tron', 'SpyHunter', 'Commando', 'Asteroids', 'Tetris', 'Frogger', 'Defender', 'Joust']; 
 var correctCount = 0;
+var wait = true;
 
 
 //Randomly choose word from word bank and setup blanks for the word
@@ -26,7 +25,7 @@ function setWord() {
 		}
 	}
 	$("#lives").text(remainingGuesses);
-	$("#score").text(wins);
+	$("#score").text(score);
 }
 
 
@@ -41,30 +40,27 @@ function guessCheck(event) {
 			updateBlanks(guess);
 			console.log(guess + " is in " + currentWord);
 
-			
 		} else if (($.inArray(guess, guessedLetters) == -1) && $.inArray(guess, currentWord) == -1) {
 			guessedLetters.push(guess);
 			remainingGuesses--;
+			drawAliens();
 			$("#lives").text(remainingGuesses);
-			if (remainingGuesses > 1) {
+			if (remainingGuesses >= 1) {
 				$("#guesses").append(guess + " ");
 			} else {
 				$("#guesses").append(guess);
 			}
 		}
 
-
 		if (remainingGuesses == 0) {
-		gameLoss();	
+			gameLoss();	
 		}
-
-
 		
 		}
 		if (correctCount == currentWord.length) {
 			gameWin();
-		console.log(success, guessedLetters, correctCount);
-	}
+			console.log(success, guessedLetters, correctCount);
+		}
 }
 
 //Resets game board
@@ -74,31 +70,57 @@ function resetBoard() {
 	replay = false;
 	guessedLetters = [];
 	success = [];
-	remainingGuesses = 8;
-	
+	remainingGuesses = 6;
 	correctCount = 0;
-
-
-
 	setWord();
+	$("#overscan").empty();
+	first = false;
+	$("#overscan").append('<img id="base" src="./assets/images/city.png" alt="Base">');
 } 
 
 function gameLoss() {
 	$(document).ready(function() {
-		var replay = confirm("Bummer you lost man \nWould you like to play again?");
+		score -= 50;
+		var replay = confirm("All out of quarters man... \nAsk your mom for more?");
 		if (replay) {
 			resetBoard();
 		}
 	});
 }
 
+var offset = null;
+var first = false;
+
+//Handles the invaders bootstrap controls to visualize lives
+function drawAliens() {
+		if (offset == false) {
+			$("#overscan").prepend('<div class="row" style="height: 38px"/>')
+			$(".invaders").addClass("col-xs-offset-1");
+			offset = true;
+		} else if (offset == true) {
+			$("#overscan").prepend('<div class="row" style="height: 38px"/>')
+			$(".invaders").removeClass("col-xs-offset-1");
+			offset = false;
+		}
+
+		if (first == false) {
+			$("#overscan").append('<div class="row">');
+			for (var i = 0; i < 3; i++) {
+				$("#overscan").append('<img class="col-xs-3 invaders" src="./assets/images/invader.png" alt="Invader"/>')
+			}
+			$("#overscan").append('</div>');
+			first = true;
+			offset = false;
+		}
+		
+}
 
 
 //Displays win screen
 function gameWin() {
 	$(document).ready(function() {
-		wins += 100;
-		$("#score").text(wins);
+		score += 100;
+		$("#score").text(score);
 		var replay = confirm("Congratulations! \nThe word was " + currentWord + " \nPlay again?");
 		if (replay) {
 			resetBoard();	
@@ -106,6 +128,14 @@ function gameWin() {
 	})
 		
 }
+
+//Drops title from off screen
+function titleDrop() {
+	$( "#title" ).animate({
+    opacity: 1,
+    height: 300,
+  }, 2000 );
+};
 
 //Takes guesses and updates the blanks with correct guesses
 function updateBlanks(letter) {
@@ -115,14 +145,15 @@ function updateBlanks(letter) {
 		if (letter == currentWord[i]) {
 			$("#" + i).text(currentWord[i] + " ");
 			correctCount++;
+			score += 25;
+			$("#score").text(score);
 		}
-	}
-		
+	}		
 }
 
 
 $(document).ready(function() {
+	titleDrop();
 	setWord();
 	document.onkeyup = guessCheck;
-
 })

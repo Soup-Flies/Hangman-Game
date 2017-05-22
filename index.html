@@ -17,12 +17,14 @@
 
 
 <div class="container">
-	<div class="row">
-		<div class="col-12">
-			<h1>Final</h1>
-		</div>
-		<div class="col-12">
-			<h1>! HangMan</h1>
+	<div id="titleholder">
+		<div class="row" id="title">
+			<div class="col-12">
+				<h1>Final</h1>
+			</div>
+			<div class="col-12">
+				<h1>! HangMan</h1>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -31,41 +33,18 @@
 				Score: <span id="score"></span>
 			</p>
 		</div>
+		<div class="col-xs-4 col-xs-offset-2">
+			<p>
+				Lives: <span id="lives"></span>
+			</p>		
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-6 col-xs-12">
-			<div class="overscan">
+			<div id="overscan">
+				<div></div>
 			
-
-
-
-
-				<!-- <div class="row">
-					<div class="col-xs-2 col-xs-offset-5">
-						<div id="cranium" class="bodyParts"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-5">
-						<div id="torso" class="bodyParts"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-5">
-						<div id="lArm" class="bodyParts"></div>
-					</div>
-					<div class="col-xs-2 col-xs-offset-5">
-						<div id="rArm" class="bodyParts"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-5">
-						<div id="lLeg" class="bodyParts"></div>
-					</div>
-					<div class="col-xs-2 col-xs-offset-5">
-						<div id="rLeg" class="bodyParts"></div>
-					</div>
-				</div> -->
+			<img id="base" src="./assets/images/city.png" alt="Base">
 			</div>
 		</div>
 		<div class="col-sm-6 col-xs-12">
@@ -76,9 +55,6 @@
 				<p>
 					Use the keyboard to start
 				</p>
-				<p>
-					Lives: <span id="lives"></span>
-				</p>
 			</div>
 		<div class="row">
 			<div id="display" class="standard col-xs-12">
@@ -87,8 +63,8 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-					<p>
-					Guesses: <br/>
+					<p id="guess">
+					Guesses: <br> 
 					<span id="guesses"></span>
 					</p>
 			</div>
