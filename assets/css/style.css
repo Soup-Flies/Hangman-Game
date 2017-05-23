@@ -52,14 +52,6 @@ p {
 	.overscan {
 		height: 230px;
 	}
-
-	#torso {
-		height: 75px;
-	}
-
-	#lArm, #rArm {
-		margin-top: -100px;
-	}
 }
 
 @media screen and (max-width: 648px) {

@@ -6,7 +6,9 @@ var remainingGuesses = 6;
 var guess;
 var wordList = ['Galaga', 'Arkanoid', 'Gauntlet', 'Centipede', 'Contra', 'Galaxian', 'Millipede', 'Tron', 'SpyHunter', 'Commando', 'Asteroids', 'Tetris', 'Frogger', 'Defender', 'Joust']; 
 var correctCount = 0;
-var wait = true;
+var play = true;
+var offset = null;
+var first = false;
 
 
 //Randomly choose word from word bank and setup blanks for the word
@@ -31,6 +33,9 @@ function setWord() {
 
 //Takes keyboard input and tests whether or not it is in current word
 function guessCheck(event) {
+	if (!play) {
+		return;
+	}
 	console.log(event.keyCode);
 	if (event.keyCode <= 90 && event.keyCode >= 65 && $.inArray(event.key, guessedLetters)) {
 		var guess = event.key;
@@ -68,16 +73,17 @@ function guessCheck(event) {
 function resetBoard() {
 	$(document).ready(function() {
 		$("#display").empty();
-	$("#guesses").empty();
-	replay = false;
-	guessedLetters = [];
-	success = [];
-	remainingGuesses = 6;
-	correctCount = 0;
-	setWord();
-	$("#overscan").empty();
-	first = false;
-	$("#overscan").append('<img id="base" src="./assets/images/city.png" alt="Base">');	
+		$("#guesses").empty();
+		replay = false;
+		guessedLetters = [];
+		success = [];
+		remainingGuesses = 6;
+		correctCount = 0;
+		setWord();
+		$("#overscan").empty();
+		first = false;
+		offset = null;
+		$("#overscan").append('<img id="base" src="./assets/images/city.png" alt="Base">');	
 	})
 } 
 
@@ -88,13 +94,12 @@ function gameLoss() {
 		var replay = confirm("The word was: " + currentWord + "\nAll out of quarters man... \nAsk your mom for more?");
 		if (replay) {
 			resetBoard();
+		} else {
+			play = false;
 		}
 	})
 	
 }
-
-var offset = null;
-var first = false;
 
 //Handles the invaders bootstrap controls to visualize lives
 function drawAliens() {
@@ -129,6 +134,8 @@ function gameWin() {
 		var replay = confirm("Congratulations! \nThe word was " + currentWord + " \nPlay again?");
 		if (replay) {
 			resetBoard();	
+		} else {
+			play = false;
 		}
 	})
 		
