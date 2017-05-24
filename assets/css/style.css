@@ -19,6 +19,11 @@
 	padding-top: 10px;
 }
 
+.invaders {
+	height: 38px;
+	width: 83px;
+}
+
 body {
 	padding: 10px;
 	border: double 7px #B00;
